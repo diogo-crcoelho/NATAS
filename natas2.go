@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
-	// "regexp"
-	// "strings"
+	"regexp"
+	"strings"
 )
 
 var (
@@ -15,15 +15,15 @@ var (
 )
 
 func main (){
-	request, _ := http.NewRequest("GET", url, nil)
+	request, _ := http.NewRequest("GET", url + "/files/users.txt", nil)
 
 	request.SetBasicAuth(username, password)
 	response, _ := http.DefaultClient.Do(request)
 	defer response.Body.Close()	
 	content ,_ := ioutil.ReadAll(response.Body)
-	fmt.Println(string(content))
-	// regex := regexp.MustCompile(`<!--The password for natas(.*)>`)
-	// almost := strings.Split(regex.FindAllString(string(content), 1)[0], " ")
-	// answer := almost[len(almost) - 2]
-	// fmt.Println(answer)
+	// fmt.Println(string(content))
+	regex := regexp.MustCompile(`natas(.*)`)
+	almost := strings.Split(regex.FindAllString(string(content), 1)[0], ":")
+	answer := almost[len(almost) - 1]
+	fmt.Println(answer)
 }
