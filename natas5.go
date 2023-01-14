@@ -25,9 +25,9 @@ func main (){
 	defer response.Body.Close()
 
 	content ,_ := ioutil.ReadAll(response.Body)
-	fmt.Println(string(content))
+	// fmt.Println(string(content))
 	regex := regexp.MustCompile(`The password for natas(.*)`)
 	almost := strings.Split(regex.FindAllString(string(content), 1)[0], " ")
-	answer := strings.Split(almost[len(almost) - 1], "<")[0]
+	answer := strings.Split(almost[len(almost) - 1], "<")
 	fmt.Println(answer)
 }
