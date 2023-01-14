@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
-	"regexp"
-	"strings"
+	// "regexp"
+	// "strings"
 )
 
 var (
-	username = "natas1"
-	password = "g9D9cREhslqBKtcA2uocGHPfMZVzeFK6"
-	url = "http://natas1.natas.labs.overthewire.org" 
+	username = "natas2"
+	password = "h4ubbcXrWqsTo7GGnnUMLppXbOogfBZ7"
+	url = "http://natas2.natas.labs.overthewire.org" 
 )
 
 func main (){
@@ -21,8 +21,9 @@ func main (){
 	response, _ := http.DefaultClient.Do(request)
 	defer response.Body.Close()	
 	content ,_ := ioutil.ReadAll(response.Body)
-	regex := regexp.MustCompile(`<!--The password for natas(.*)>`)
-	almost := strings.Split(regex.FindAllString(string(content), 1)[0], " ")
-	answer := almost[len(almost) - 2]
-	fmt.Println(answer)
+	fmt.Println(string(content))
+	// regex := regexp.MustCompile(`<!--The password for natas(.*)>`)
+	// almost := strings.Split(regex.FindAllString(string(content), 1)[0], " ")
+	// answer := almost[len(almost) - 2]
+	// fmt.Println(answer)
 }
