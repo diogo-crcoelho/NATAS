@@ -29,7 +29,7 @@ func main (){
 	content ,_ := ioutil.ReadAll(response.Body)
 	// fmt.Println(string(content))
 	regex := regexp.MustCompile(`<pre>\n(.*)\n</pre>`)
-	almost := strings.Split(regex.FindAllString(string(content), 1)[0], "\n")
+	almost := strings.Split(regex.FindAllString(string(content), 1)[0], "\n")[0]
 	answer := almost[1]
 	fmt.Println(answer)
 }
