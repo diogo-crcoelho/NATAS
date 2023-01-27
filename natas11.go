@@ -19,6 +19,8 @@ func main (){
 	request, _ := http.NewRequest("GET", urls, nil)
 	cookies := &http.Cookie{Name: "showpassword", Value: "yes"}
 	request.AddCookie(cookies)
+
+	
 	// data := url.Values{}
 	// data.Set("needle", ".* /etc/natas_webpass/natas11 #")
 	// data.Set("submit", "submit")
